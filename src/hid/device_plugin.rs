@@ -6,6 +6,7 @@ use libc::{c_void, uint8_t, uint32_t};
 use ::{IOHIDCallback, IOHIDElementRef, IOHIDReportType, IOHIDReportCallback, IOHIDReportWithTimeStampCallback,
        IOHIDTransactionDirectionType, IOHIDValueCallback, IOHIDValueRef, IOOptionBits, IOReturn};
 
+#[macro_export]
 macro_rules! kIOHIDDeviceFactoryID {
     () => {
         $crate::CFUUIDGetConstantUUIDWithBytes($crate::ptr::null_mut(),
@@ -14,6 +15,7 @@ macro_rules! kIOHIDDeviceFactoryID {
     }
 }
 
+#[macro_export]
 macro_rules! kIOHIDDeviceTypeID {
     () => {
         $crate::CFUUIDGetConstantUUIDWithBytes($crate::ptr::null_mut(), 
@@ -22,6 +24,7 @@ macro_rules! kIOHIDDeviceTypeID {
     }
 }
 
+#[macro_export]
 macro_rules! kIOHIDDeviceDeviceInterfaceID {
     () => {
         $crate::CFUUIDGetConstantUUIDWithBytes($crate::ptr::null_mut(),
@@ -30,6 +33,7 @@ macro_rules! kIOHIDDeviceDeviceInterfaceID {
     }
 }
 
+#[macro_export]
 macro_rules! kIOHIDDeviceDeviceInterfaceID2 {
     () => {
         $crate::CFUUIDGetConstantUUIDWithBytes($crate::ptr::null_mut(),
@@ -38,6 +42,7 @@ macro_rules! kIOHIDDeviceDeviceInterfaceID2 {
     }
 }
 
+#[macro_export]
 macro_rules! kIOHIDDeviceQueueInterfaceID {
     () => {
         $crate::CFUUIDGetConstantUUIDWithBytes($crate::ptr::null_mut(),
@@ -46,6 +51,7 @@ macro_rules! kIOHIDDeviceQueueInterfaceID {
     }
 }
 
+#[macro_export]
 macro_rules! kIOHIDDeviceTransactionInterfaceID {
     () => {
         $crate::CFUUIDGetConstantUUIDWithBytes($crate::ptr::null_mut(),
