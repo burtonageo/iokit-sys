@@ -2,7 +2,7 @@
 
 use cf::{Boolean, CFAllocatorRef, CFArrayRef, CFDictionaryRef, CFRunLoopRef, CFSetRef, CFStringRef, CFTypeID, CFTypeRef};
 use libc::c_void;
-use ::{IOHIDDeviceCallback, IOOptionBits, IOReturn};
+use ::{IOHIDDeviceCallback, IOHIDValueCallback, IOOptionBits, IOReturn};
 
 pub const kIOHIDManagerOptionNone: IOOptionBits = 0x0;
 pub const kIOHIDManagerOptionUsePersistentProperties: IOOptionBits = 0x1;
