@@ -1,5 +1,6 @@
 #![allow(non_camel_case_types,non_upper_case_globals,non_snake_case)]
 
+extern crate core;
 extern crate CoreFoundation_sys as cf;
 extern crate libc;
 extern crate mach;
@@ -14,12 +15,14 @@ use mach::port::mach_port_t;
 use mach::types::task_port_t;
 use mach::vm_types::{mach_vm_address_t,mach_vm_size_t};
 
+pub use hid::*;
 pub use io_return::*;
 pub use keys::*;
 pub use serial::*;
 pub use types::*;
 pub use usb::*;
 
+mod hid;
 mod io_return;
 mod keys;
 mod serial;

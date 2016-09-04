@@ -15,4 +15,5 @@ build = "build.rs"
 [dependencies]
 libc = "0.2"
 mach = "0.0.5"
-CoreFoundation-sys = "0.1.3"
+# CoreFoundation-sys = "0.1.3"
+CoreFoundation-sys = { git = "http://github.com/burtonageo/core-foundation-sys", branch = "iokit_work" }
