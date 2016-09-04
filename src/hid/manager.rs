@@ -44,7 +44,7 @@ extern {
                                                      context: *mut c_void);
     pub fn IOHIDManagerRegisterInputReportCallback(manager: IOHIDDeviceManagerRef, callback: IOHIDDeviceCallback,
                                                    context: *mut c_void);
-    pub fn IOHIDManagerRegisterInputValueCallback(manager: IOHIDDeviceManagerRef, callback: IOHIDDeviceCallback,
+    pub fn IOHIDManagerRegisterInputValueCallback(manager: IOHIDDeviceManagerRef, callback: IOHIDValueCallback,
                                                   context: *mut c_void);
 
     pub fn IOHIDManagerSetInputValueMatching(manager: IOHIDDeviceManagerRef, matching: CFDictionaryRef);
