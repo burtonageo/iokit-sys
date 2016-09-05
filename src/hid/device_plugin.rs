@@ -62,33 +62,34 @@ macro_rules! kIOHIDDeviceTransactionInterfaceID {
 
 #[repr(C)]
 pub struct IOHID_DEVICE_DEVICE_FUNCS_V1 {
-    pub open: extern "C" fn(_self: *mut c_void, options: IOOptionBits) -> IOReturn,
-    pub close: extern "C" fn(_self: *mut c_void, options: IOOptionBits) -> IOReturn,
+    pub open: unsafe extern "C" fn(_self: *mut c_void, options: IOOptionBits) -> IOReturn,
+    pub close: unsafe extern "C" fn(_self: *mut c_void, options: IOOptionBits) -> IOReturn,
 
-    pub getProperty: extern "C" fn(_self: *mut c_void, key: CFStringRef, pProperty: *mut CFTypeRef) -> IOReturn,
-    pub setProperty: extern "C" fn(_self: *mut c_void, key: CFStringRef, property: CFTypeRef)-> IOReturn,
+    pub getProperty: unsafe extern "C" fn(_self: *mut c_void, key: CFStringRef, pProperty: *mut CFTypeRef) -> IOReturn,
+    pub setProperty: unsafe extern "C" fn(_self: *mut c_void, key: CFStringRef, property: CFTypeRef)-> IOReturn,
     
-    pub getAsyncEventSource: extern "C" fn(_self: *mut c_void, source: CFTypeRef) -> IOReturn,
-    pub copyMatchingElements: extern "C" fn(_self: *mut c_void, matchingDict: CFDictionaryRef,
-                                            pElements: *mut CFArrayRef, options: IOOptionBits)
-                                            -> IOReturn,
-    pub setValue: extern "C" fn(_self: *mut c_void, value: IOHIDValueRef, timeout: uint32_t,
-                                                     callback: IOHIDValueCallback, context: *mut c_void,
-                                                     options: IOOptionBits) -> IOReturn,
-    pub getValue: extern "C" fn(_self: *mut c_void, pValue: *mut IOHIDValueRef, timeout: uint32_t,
-                                                     callback: IOHIDValueCallback, context: *mut c_void,
-                                                     options: IOOptionBits) -> IOReturn,
+    pub getAsyncEventSource: unsafe extern "C" fn(_self: *mut c_void, source: CFTypeRef) -> IOReturn,
+    pub copyMatchingElements: unsafe extern "C" fn(_self: *mut c_void, matchingDict: CFDictionaryRef,
+                                                   pElements: *mut CFArrayRef, options: IOOptionBits) -> IOReturn,
+    pub setValue: unsafe extern "C" fn(_self: *mut c_void, value: IOHIDValueRef, timeout: uint32_t,
+                                       callback: IOHIDValueCallback, context: *mut c_void,
+                                       options: IOOptionBits) -> IOReturn,
+    pub getValue: unsafe extern "C" fn(_self: *mut c_void, pValue: *mut IOHIDValueRef, timeout: uint32_t,
+                                       callback: IOHIDValueCallback, context: *mut c_void,
+                                       options: IOOptionBits) -> IOReturn,
     
-    pub setInputReportCallback: extern "C" fn(_self: *mut c_void, report: *mut uint8_t, reportID: uint32_t,
-                                              reportLength: CFIndex, callback: IOHIDReportCallback,
-                                              context: *mut c_void, options: IOOptionBits) -> IOReturn,
+    pub setInputReportCallback: unsafe extern "C" fn(_self: *mut c_void, report: *mut uint8_t, reportID: uint32_t,
+                                                     reportLength: CFIndex, callback: IOHIDReportCallback,
+                                                     context: *mut c_void, options: IOOptionBits) -> IOReturn,
     
-    pub setReport: extern "C" fn(_self: *mut c_void, reportType: IOHIDReportType, reportID: uint32_t, report: *const uint8_t,
-                                 reportLength: CFIndex, timeout: uint32_t, callback: IOHIDReportCallback, context: *mut c_void,
-                                 options: IOOptionBits) -> IOReturn,
-    pub getReport: extern "C" fn(_self: *mut c_void, reportType: IOHIDReportType, reportID: uint32_t, report: *mut uint8_t,
-                                 pReportLength: *mut CFIndex, timeout: uint32_t, callback: IOHIDReportCallback,
-                                 context: *mut c_void, options: IOOptionBits) -> IOReturn,
+    pub setReport: unsafe extern "C" fn(_self: *mut c_void, reportType: IOHIDReportType, reportID: uint32_t,
+                                       report: *const uint8_t, reportLength: CFIndex, timeout: uint32_t,
+                                       callback: IOHIDReportCallback, context: *mut c_void, options: IOOptionBits)
+                                       -> IOReturn,
+    pub getReport: unsafe extern "C" fn(_self: *mut c_void, reportType: IOHIDReportType, reportID: uint32_t,
+                                        report: *mut uint8_t, pReportLength: *mut CFIndex, timeout: uint32_t,
+                                        callback: IOHIDReportCallback, context: *mut c_void, options: IOOptionBits)
+                                        -> IOReturn,
 }
 
 #[repr(C)]
@@ -99,9 +100,11 @@ pub struct IOHIDDeviceDeviceInterface {
 
 #[repr(C)]
 pub struct IOHID_DEVICE_DEVICE_FUNCS_V2 {
-    pub setInputReportWithTimeStampCallback: extern "C" fn(_self: *mut c_void, report: *mut uint8_t, reportLength: CFIndex,
-                                                           callback: IOHIDReportWithTimeStampCallback, context: *mut c_void,
-                                                           options: IOOptionBits) -> IOReturn
+    pub setInputReportWithTimeStampCallback: unsafe extern "C" fn(_self: *mut c_void, report: *mut uint8_t,
+                                                                  reportLength: CFIndex,
+                                                                  callback: IOHIDReportWithTimeStampCallback,
+                                                                  context: *mut c_void, options: IOOptionBits)
+                                                                  -> IOReturn
 }
 
 #[repr(C)]
@@ -115,47 +118,47 @@ pub struct IOHIDDeviceTimeStampedDeviceInterface {
 pub struct IOHIDDeviceQueueInterface {
     pub iunknown_c_guts: IUNKNOWN_C_GUTS,
 
-    pub getAsyncEventSource: extern "C" fn(_self: *mut c_void, pSource: *mut CFTypeRef) -> IOReturn,
+    pub getAsyncEventSource: unsafe extern "C" fn(_self: *mut c_void, pSource: *mut CFTypeRef) -> IOReturn,
 
-    pub setDepth: extern "C" fn(_self: *mut c_void, depth: uint32_t, options: IOOptionBits) -> IOReturn,
-    pub getDepth: extern "C" fn(_self: *mut c_void, pDepth: *mut uint32_t) -> IOReturn,
+    pub setDepth: unsafe extern "C" fn(_self: *mut c_void, depth: uint32_t, options: IOOptionBits) -> IOReturn,
+    pub getDepth: unsafe extern "C" fn(_self: *mut c_void, pDepth: *mut uint32_t) -> IOReturn,
 
-    pub addElement: extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, options: IOOptionBits) -> IOReturn,
-    pub removeElement: extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, options: IOOptionBits) -> IOReturn,
-    pub containsElement:  extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, pValue: *mut Boolean,
-                                        options: IOOptionBits) -> IOReturn,
+    pub addElement: unsafe extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, options: IOOptionBits) -> IOReturn,
+    pub removeElement: unsafe extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, options: IOOptionBits) -> IOReturn,
+    pub containsElement: unsafe extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, pValue: *mut Boolean,
+                                              options: IOOptionBits) -> IOReturn,
 
-    pub start: extern "C" fn(_self: *mut c_void, options: IOOptionBits) -> IOReturn,
-    pub stop: extern "C" fn(_self: *mut c_void, options: IOOptionBits) -> IOReturn,
+    pub start: unsafe extern "C" fn(_self: *mut c_void, options: IOOptionBits) -> IOReturn,
+    pub stop: unsafe extern "C" fn(_self: *mut c_void, options: IOOptionBits) -> IOReturn,
 
-    pub setValueAvailableCallback: extern "C" fn(_self: *mut c_void, callback: IOHIDCallback, context: *mut c_void)
-                                                 -> IOReturn,
+    pub setValueAvailableCallback: unsafe extern "C" fn(_self: *mut c_void, callback: IOHIDCallback, context: *mut c_void)
+                                                        -> IOReturn,
 
-    pub copyNextValue: extern "C" fn(_self: *mut c_void, pValue: *mut IOHIDValueRef, timeout: uint32_t, options: IOOptionBits)
-                                     -> IOReturn
+    pub copyNextValue: unsafe extern "C" fn(_self: *mut c_void, pValue: *mut IOHIDValueRef, timeout: uint32_t,
+                                            options: IOOptionBits) -> IOReturn
 }
 
 #[repr(C)]
 pub struct IOHIDDeviceTransactionInterface {
     pub iunknown_c_guts: IUNKNOWN_C_GUTS,
 
-    pub getAsyncEventSource: extern "C" fn(_self: *mut c_void, pSource: *mut CFTypeRef) -> IOReturn,
+    pub getAsyncEventSource: unsafe extern "C" fn(_self: *mut c_void, pSource: *mut CFTypeRef) -> IOReturn,
 
-    pub setDirection: extern "C" fn(_self: *mut c_void, direction: IOHIDTransactionDirectionType, options: IOOptionBits)
-                                    -> IOReturn,
-    pub getDirection: extern "C" fn(_self: *mut c_void, pDirection: *mut IOHIDTransactionDirectionType) -> IOReturn,
+    pub setDirection: unsafe extern "C" fn(_self: *mut c_void, direction: IOHIDTransactionDirectionType, options: IOOptionBits)
+                                           -> IOReturn,
+    pub getDirection: unsafe extern "C" fn(_self: *mut c_void, pDirection: *mut IOHIDTransactionDirectionType) -> IOReturn,
 
-    pub addElement: extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, options: IOOptionBits) -> IOReturn,
-    pub removeElement: extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, options: IOOptionBits) -> IOReturn,
-    pub containsElement: extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, pValue: *mut Boolean,
+    pub addElement: unsafe extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, options: IOOptionBits) -> IOReturn,
+    pub removeElement: unsafe extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, options: IOOptionBits) -> IOReturn,
+    pub containsElement: unsafe extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, pValue: *mut Boolean,
+                                              options: IOOptionBits) -> IOReturn,
+
+    pub setValue: unsafe extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, value: IOHIDValueRef, options: IOOptionBits)
+                                       -> IOReturn,
+    pub getValue: unsafe extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, pValue: *mut IOHIDValueRef,
                                        options: IOOptionBits) -> IOReturn,
 
-    pub setValue: extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, value: IOHIDValueRef, options: IOOptionBits)
-                                -> IOReturn,
-    pub getValue: extern "C" fn(_self: *mut c_void, element: IOHIDElementRef, pValue: *mut IOHIDValueRef, options: IOOptionBits)
-                                -> IOReturn,
-
-    pub commit: extern "C" fn(_self: *mut c_void, timeout: uint32_t, callback: IOHIDCallback, context: *mut c_void,
-                              options: IOOptionBits) -> IOReturn,
-    pub clear: extern "C" fn(_self: *mut c_void, options: IOOptionBits) -> IOReturn
+    pub commit: unsafe extern "C" fn(_self: *mut c_void, timeout: uint32_t, callback: IOHIDCallback, context: *mut c_void,
+                                     options: IOOptionBits) -> IOReturn,
+    pub clear: unsafe extern "C" fn(_self: *mut c_void, options: IOOptionBits) -> IOReturn
 }
