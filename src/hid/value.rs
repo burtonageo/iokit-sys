@@ -1,7 +1,7 @@
 // exports from <IOKit/hid/IOHIDValue.h>
 
 use cf::{CFAllocatorRef, CFIndex, CFTypeID};
-use libc::{uint64_t, uint8_t};
+use libc::{c_double, uint64_t, uint8_t};
 use ::{IOHIDElementRef, IOHIDValueRef, IOHIDValueScaleType};
 
 extern "C" {
@@ -18,5 +18,5 @@ extern "C" {
     pub fn IOHIDValueGetLength(value: IOHIDValueRef) -> CFIndex;
     pub fn IOHIDValueGetBytePtr(value: IOHIDValueRef) -> *const uint8_t;
     pub fn IOHIDValueGetIntegerValue(value: IOHIDValueRef) -> CFIndex;
-    pub fn IOHIDValueGetScaledValue(value: IOHIDValueRef, _type: IOHIDValueScaleType) -> f64; // TODO: return double_t type
+    pub fn IOHIDValueGetScaledValue(value: IOHIDValueRef, _type: IOHIDValueScaleType) -> c_double;
 }
