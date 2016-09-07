@@ -6,6 +6,9 @@ use libc::{c_void, uint8_t, uint32_t};
 use ::{IOHIDCallback, IOHIDElementRef, IOHIDReportType, IOHIDReportCallback, IOHIDReportWithTimeStampCallback,
        IOHIDTransactionDirectionType, IOHIDValueCallback, IOHIDValueRef, IOOptionBits, IOReturn};
 
+pub use cf::CFUUIDGetConstantUUIDWithBytes;
+pub use core::ptr;
+
 #[macro_export]
 macro_rules! kIOHIDDeviceFactoryID {
     () => {
