@@ -6,13 +6,10 @@ use libc::{c_void, uint8_t, uint32_t};
 use ::{IOHIDCallback, IOHIDElementRef, IOHIDReportType, IOHIDReportCallback, IOHIDReportWithTimeStampCallback,
        IOHIDTransactionDirectionType, IOHIDValueCallback, IOHIDValueRef, IOOptionBits, IOReturn};
 
-pub use cf::CFUUIDGetConstantUUIDWithBytes;
-pub use core::ptr;
-
 #[macro_export]
 macro_rules! kIOHIDDeviceFactoryID {
     () => {
-        $crate::CFUUIDGetConstantUUIDWithBytes(::core::ptr::null_mut(),
+        ::cf::CFUUIDGetConstantUUIDWithBytes(::core::ptr::null_mut(),
             0x13, 0xAA, 0x9C, 0x44, 0x6F, 0x1B, 0x11, 0xD4,
             0x90, 0x7C, 0x00, 0x05, 0x02, 0x8F, 0x18, 0xD5)
     }
@@ -21,7 +18,7 @@ macro_rules! kIOHIDDeviceFactoryID {
 #[macro_export]
 macro_rules! kIOHIDDeviceTypeID {
     () => {
-        $crate::CFUUIDGetConstantUUIDWithBytes(::core::ptr::null_mut(), 
+        ::cf::CFUUIDGetConstantUUIDWithBytes(::core::ptr::null_mut(), 
             0x7d, 0xde, 0xec, 0xa8, 0xa7, 0xb4, 0x11, 0xda,
             0x8a, 0x0e, 0x00, 0x14, 0x51, 0x97, 0x58, 0xef)
     }
@@ -30,7 +27,7 @@ macro_rules! kIOHIDDeviceTypeID {
 #[macro_export]
 macro_rules! kIOHIDDeviceDeviceInterfaceID {
     () => {
-        $crate::CFUUIDGetConstantUUIDWithBytes(::core::ptr::null_mut(),
+        ::cf::CFUUIDGetConstantUUIDWithBytes(::core::ptr::null_mut(),
             0x47, 0x4b, 0xdc, 0x8e, 0x9f, 0x4a, 0x11, 0xda,
             0xb3, 0x66, 0x00, 0x0d, 0x93, 0x6d, 0x06, 0xd2)
     }
@@ -39,7 +36,7 @@ macro_rules! kIOHIDDeviceDeviceInterfaceID {
 #[macro_export]
 macro_rules! kIOHIDDeviceDeviceInterfaceID2 {
     () => {
-        $crate::CFUUIDGetConstantUUIDWithBytes(::core::ptr::null_mut(),
+        ::cf::CFUUIDGetConstantUUIDWithBytes(::core::ptr::null_mut(),
             0xB4, 0x73, 0x25, 0x6C, 0x6A, 0x72, 0x4E, 0x04,
             0xB6, 0x94, 0xC4, 0x00, 0x1D, 0x20, 0x20, 0x20)
     }
@@ -48,7 +45,7 @@ macro_rules! kIOHIDDeviceDeviceInterfaceID2 {
 #[macro_export]
 macro_rules! kIOHIDDeviceQueueInterfaceID {
     () => {
-        $crate::CFUUIDGetConstantUUIDWithBytes(::core::ptr::null_mut(),
+        ::cf::CFUUIDGetConstantUUIDWithBytes(::core::ptr::null_mut(),
             0x2e, 0xc7, 0x8b, 0xdb, 0x9f, 0x4e, 0x11, 0xda,
             0xb6, 0x5c, 0x00, 0x0d, 0x93, 0x6d, 0x06, 0xd2)
     }
@@ -57,7 +54,7 @@ macro_rules! kIOHIDDeviceQueueInterfaceID {
 #[macro_export]
 macro_rules! kIOHIDDeviceTransactionInterfaceID {
     () => {
-        $crate::CFUUIDGetConstantUUIDWithBytes(::core::ptr::null_mut(),
+        ::cf::CFUUIDGetConstantUUIDWithBytes(::core::ptr::null_mut(),
             0x1f, 0x2e, 0x78, 0xfa, 0x9f, 0xfa, 0x11, 0xda,
             0x90, 0xb4, 0x00, 0x0d, 0x93, 0x6d, 0x06, 0xd2)
     }
